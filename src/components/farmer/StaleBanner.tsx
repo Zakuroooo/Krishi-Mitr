@@ -22,6 +22,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { CACHE_STALE_MS } from '../../config';
@@ -98,7 +99,7 @@ export function StaleBanner({ dataUpdatedAt, locale = 'mr' }: StaleBannerProps) 
 
 const styles = StyleSheet.create({
   banner: {
-    backgroundColor: '#FFF3E0',
+    backgroundColor: colors.warningContainer,
     borderRadius: 8,
     paddingVertical: 8,
     paddingHorizontal: 12,

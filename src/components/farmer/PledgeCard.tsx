@@ -38,6 +38,7 @@
  */
 
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { formatBps, formatNumber, formatPaise } from '../../lib/money';
@@ -145,7 +146,7 @@ function Row({ label, value, testID }: { label: string; value: string; testID?: 
   );
 }
 
-const GREEN = '#1B5E20';
+const GREEN = colors.primaryContainer;
 const RED = '#C62828';
 
 const styles = StyleSheet.create({

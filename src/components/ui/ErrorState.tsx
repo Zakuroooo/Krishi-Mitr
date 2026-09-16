@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from './Button';
 import { translate } from '../../lib/i18n';
@@ -62,13 +63,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   iconText: {
-    color: '#FFFFFF',
+    color: colors.surface,
     fontSize: 22,
     fontWeight: '900',
   },
   message: {
     fontSize: 16,
-    color: '#C53030',
+    color: colors.criticalSolid,
     textAlign: 'center',
     fontWeight: '600',
     marginBottom: 16,

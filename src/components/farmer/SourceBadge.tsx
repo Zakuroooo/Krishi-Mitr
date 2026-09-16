@@ -15,6 +15,7 @@
  */
 
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, View } from 'react-native';
 import { translate } from '../../lib/i18n';
 import type { DataSource, Locale } from '../../types/api';
@@ -33,11 +34,11 @@ export const UNTRUSTED_LABEL_KEY: Record<Exclude<DataSource, 'AGMARKNET' | 'MSAM
 };
 
 export const SOURCE_COLOR: Record<DataSource, string> = {
-  AGMARKNET: '#1B5E20',
-  MSAMB: '#1B5E20',
-  ARCHIVE: '#E65100',
-  SYNTHETIC: '#E65100',
-  IMPUTED: '#E65100',
+  AGMARKNET: colors.positiveSolid,
+  MSAMB: colors.positiveSolid,
+  ARCHIVE: colors.warning,
+  SYNTHETIC: colors.warning,
+  IMPUTED: colors.warning,
 };
 
 export function untrustedSourceLabel(source: Exclude<DataSource, 'AGMARKNET' | 'MSAMB'>, locale: Locale): string {
@@ -66,9 +67,9 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignSelf: 'flex-start',
   },
-  trusted: { backgroundColor: '#E8F5E9' },
-  untrusted: { backgroundColor: '#FFF3E0' },
+  trusted: { backgroundColor: colors.positiveContainer },
+  untrusted: { backgroundColor: colors.warningContainer },
   label: { fontSize: 12, fontWeight: '700' },
-  labelTrusted: { color: '#1B5E20' },
-  labelUntrusted: { color: '#E65100' },
+  labelTrusted: { color: colors.positiveSolid },
+  labelUntrusted: { color: colors.warning },
 });

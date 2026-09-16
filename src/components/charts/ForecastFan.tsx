@@ -38,6 +38,7 @@
  */
 
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Line, Path, Polyline } from 'react-native-svg';
 
@@ -55,7 +56,7 @@ type Props = {
 const WIDTH = 320;
 const HEIGHT = 180;
 const PAD = 16;
-const GREEN = '#2E7D32';
+const GREEN = colors.primaryContainer;
 
 export function ForecastFan({ p10, p50, p90, locale }: Props) {
   const n = p50.length;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
 
 export interface CardProps extends ViewProps {
@@ -29,15 +30,15 @@ export function Card({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.surface,
     borderRadius: 16,
     padding: 20,
     marginVertical: 8,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.borderCard,
   },
   outlined: {
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderField,
     borderWidth: 1.5,
   },
   elevated: {

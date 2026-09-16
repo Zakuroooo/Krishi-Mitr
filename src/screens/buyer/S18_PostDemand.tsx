@@ -137,9 +137,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
   },
-  chipActive: { borderColor: colors.positiveSolid, backgroundColor: colors.positiveContainer },
+  // ★ Selection is a brand state, not a "this is verified" state. The old
+  //   buyer design used green as its brand colour, so a straight colour swap
+  //   turned every selected chip emerald — which in this design system means
+  //   "assayed, confirmed, money released". A farmer's chosen commodity is
+  //   none of those. Ochre, like every other selected control in the app.
+  chipActive: { borderColor: colors.primary, backgroundColor: colors.surfaceContainerLow },
   chipText: { fontSize: 14, color: colors.onSurfaceVariant, fontWeight: '600' },
-  chipTextActive: { color: colors.positiveSolid },
+  chipTextActive: { color: colors.primary },
   gradeChip: {
     flex: 1,
     padding: 12,
