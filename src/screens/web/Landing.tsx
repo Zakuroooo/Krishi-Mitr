@@ -105,11 +105,12 @@ export default function Landing() {
   const [locale, setLocale] = useState<Locale>('mr');
   const copy = COPY[locale];
 
-  const enterAsBuyer = () => {
-    // The buyer console is behind the same auth gate as the farmer app; the
-    // fixture account is how the phone build reaches it too.
-    void signIn(fxAuthRegisteredBuyer);
-  };
+  // ★ The buyer door now opens the buyer splash rather than signing straight
+  //   in. A trader arriving at a URL has been told nothing yet: what is sold
+  //   here, who holds the money, what proof of quality comes with a load. That
+  //   screen answers those three before asking him for anything — it is the
+  //   approved Stitch design, and skipping it was only ever a shortcut for me.
+  const enterAsBuyer = () => navigation.navigate('Buyer_Splash');
 
   return (
     <ScrollView style={styles.root} contentContainerStyle={styles.content}>

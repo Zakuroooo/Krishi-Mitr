@@ -5,7 +5,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
 import Landing from '../screens/web/Landing';
+import BuyerSplash from '../screens/buyer/BuyerSplash';
+import { useAuth } from '../lib/auth';
+import { fxAuthRegisteredBuyer } from '../fixtures/auth';
 import S00_Splash from '../screens/farmer/S00_Splash';
 import S01_Language from '../screens/farmer/S01_Language';
 import S01b_ValueCarousel from '../screens/farmer/S01b_ValueCarousel';
@@ -19,6 +23,8 @@ export type AuthStackParamList = {
    * first screen asks farmer or buyer and then hands over to the phone flow
    * unchanged. See `screens/web/Landing.tsx`. */
   Web_Landing: undefined;
+  /** The trader's own first screen — the approved Stitch buyer splash. */
+  Buyer_Splash: undefined;
   S0_Splash: undefined;
   S1_Language: undefined;
   /** Stitch 03 — "why Krishi Mitra", between the language choice and the
@@ -32,6 +38,17 @@ export type AuthStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
+
+/**
+ * The buyer splash, wired to the one thing it asks for. Signing in with the
+ * fixture buyer is how the phone build reaches the console too — there is no
+ * separate trader login yet, and inventing one on this screen would be a
+ * promise the backend cannot keep.
+ */
+function BuyerSplashRoute() {
+  const { signIn } = useAuth();
+  return <BuyerSplash onSignIn={() => void signIn(fxAuthRegisteredBuyer)} />;
+}
 
 export function AuthStack() {
   return (
@@ -61,6 +78,7 @@ export function AuthStack() {
       initialRouteName="Web_Landing"
       screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
       <Stack.Screen name="Web_Landing" component={Landing} />
+      <Stack.Screen name="Buyer_Splash" component={BuyerSplashRoute} />
       <Stack.Screen name="S0_Splash" component={S00_Splash} />
       <Stack.Screen name="S1_Language" component={S01_Language} />
       <Stack.Screen name="S1b_ValueCarousel" component={S01b_ValueCarousel} />

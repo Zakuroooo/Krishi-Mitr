@@ -492,6 +492,36 @@ export interface MatchDto {
   score: number;
   why_mr: string;
   why_en: string;
+
+  /**
+   * ★ Everything below is **optional and not in CANON §7.6 today.**
+   *
+   *   The approved Stitch design for this screen shows a trader what he
+   *   actually decides on: whose lot it is, what he is asking, what the mandi
+   *   is paying today, how wet the crop is. None of that is on the contract,
+   *   and S19's own header has carried a `TODO(akash)` about it since the
+   *   screen was written.
+   *
+   *   These fields are optional so the current server stays valid: when they
+   *   are absent the screen renders exactly what it rendered before, and when
+   *   they are present it renders the design. The fixture supplies them and
+   *   says so on screen (I8) — the app never invents one at runtime.
+   *
+   *   Filed for Akash in docs/BLOCKERS.md.
+   */
+  /** Human-facing lot reference, e.g. "A-2291". Falls back to `lot_id`. */
+  lot_ref?: string;
+  farmer_label?: string;
+  village?: string;
+  /** I1: paise, per quintal. What the farmer is asking for this lot. */
+  asking_paise_per_qtl?: number;
+  /** I1: paise, per quintal. Today's mandi rate, for the comparison. */
+  market_paise_per_qtl?: number;
+  moisture_pct?: number;
+  bags?: number;
+  pickup_at_farm?: boolean;
+  /** The lot has been assayed, so the grade is measured rather than claimed. */
+  assayed?: boolean;
 }
 
 export interface MatchesRes {
