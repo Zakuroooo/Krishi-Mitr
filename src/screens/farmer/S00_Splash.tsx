@@ -245,6 +245,23 @@ export default function S00_Splash({ navigation }: Props) {
           <Text style={styles.otpText}>{t('splash_otp_login')}</Text>
         </TouchableOpacity>
 
+        {/* The trader's way in.
+            ★ The role comes from the JWT, so on a phone the buyer console had
+              no entry point at all — the only way to reach it was to be seeded
+              as a buyer, which made the whole console undemonstrable on a
+              device. It is deliberately the quietest control on this screen:
+              this app is for the farmer, and a trader arriving here is the
+              rarer case, not an equal one. */}
+        <TouchableOpacity
+          style={styles.otpRow}
+          activeOpacity={0.7}
+          accessibilityRole="button"
+          accessibilityLabel={t('splash_buyer_entry')}
+          onPress={() => navigation.navigate('Buyer_Splash')}>
+          <Icon name="building" size={12} color={colors.outline} />
+          <Text style={styles.otpText}>{t('splash_buyer_entry')}</Text>
+        </TouchableOpacity>
+
         {/* ★ The footer read "लासलगाव • नाशिक नोड v2.4" beside "256-bit bank
             encryption". There is no Nashik node and there is no bank
             encryption: `lib/api.ts` says in its own header that Phase 1 keeps
