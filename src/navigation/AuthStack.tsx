@@ -27,7 +27,7 @@ export type AuthStackParamList = {
   Buyer_Splash: undefined;
   S0_Splash: undefined;
   S1_Language: undefined;
-  /** Stitch 03 — "why Krishi Mitra", between the language choice and the
+  /** Stitch 03 — "why Krishi Mitr", between the language choice and the
    * phone number. `S1b` because three screens already carry the `S03_`
    * prefix from the pre-Stitch numbering. */
   S1b_ValueCarousel: undefined;

@@ -96,7 +96,7 @@ export function RootNavigator() {
   const isFarmer = user.role === 'FARMER';
 
   // ★ The farmer side no longer renders this global chrome bar at all — it
-  //   was a second "Krishi Mitra" brand header stacked on top of each
+  //   was a second "Krishi Mitr" brand header stacked on top of each
   //   screen's own header (S4_Home already shows who's signed in), and its
   //   Sign Out button was the app's most destructive action rendered as
   //   permanently-visible top-bar chrome. Sign out now lives at the bottom

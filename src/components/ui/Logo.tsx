@@ -1,9 +1,9 @@
 /**
- * The Krishi Mitra mark.
+ * The Krishi Mitr mark.
  *
  * ★ Why this exists: the splash screen drew its emblem as the literal text
  *   `SETU` inside two nested circles — a leftover from the project's earlier
- *   name. The app is called Krishi Mitra everywhere else, so the first screen
+ *   name. The app is called Krishi Mitr everywhere else, so the first screen
  *   a farmer and a judge both see was branded as a different product.
  *
  * ★ What it draws: a sprout rising out of an arch. The arch is the *setu*

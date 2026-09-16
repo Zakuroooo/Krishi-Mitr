@@ -1,5 +1,5 @@
 /**
- * Icon — Professional SVG icon system for Krishi Mitra.
+ * Icon — Professional SVG icon system for Krishi Mitr.
  *
  * NO EMOJIS. Every icon is a proper vector path rendered via react-native-svg.
  * Usage: <Icon name="leaf" size={24} color={colors.primary} />
