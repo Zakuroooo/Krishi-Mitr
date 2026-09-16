@@ -22,6 +22,7 @@ import { I18nProvider } from './src/lib/i18n';
 import { SelectionProvider } from './src/lib/selection';
 import { hydrateQueryClient, persistQueryClient } from './src/lib/offline';
 import { RootNavigator } from './src/navigation/RootNavigator';
+import { useBrowserBack } from './src/lib/useBrowserBack';
 import { CACHE_STALE_MS } from './src/config';
 
 const queryClient = new QueryClient({
