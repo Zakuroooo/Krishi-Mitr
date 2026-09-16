@@ -59,7 +59,24 @@ const DEV_HOST: Record<DevTransport, string> = {
   lan: `http://${LAN_IP}:8000`,
 };
 
-export const API_BASE_URL = __DEV__
+/**
+ * ★ In a browser this is same-origin, and that is not a convenience.
+ *
+ *   The web build has no FastAPI host to point at, and the one thing it still
+ *   needs a server for is the voice: Sarvam will not be called from the page,
+ *   because a key in a bundle is a published key (I10). `api/v1/voice/*` are
+ *   serverless functions deployed beside the site; they hold the keys in
+ *   environment variables and speak the backend's own `NarrateRes` shape, so
+ *   `lib/api.ts` does not know the difference.
+ *
+ *   Everything else still reads from `src/fixtures/` while `USE_FIXTURES` is
+ *   true, exactly as on the phone.
+ */
+const IS_BROWSER = typeof document !== 'undefined';
+
+export const API_BASE_URL = IS_BROWSER
+  ? '/api/v1'
+  : __DEV__
   ? `${DEV_HOST[DEV_TRANSPORT]}/api/v1`
   : `${PROD_HOST}/api/v1`;
 

@@ -24,6 +24,8 @@
  *   Matching is now per whole word.
  */
 
+import { numberWordToDigits, repeatCount } from './numberWords';
+
 /** Devanagari zero through nine, in order, so the index is the value. */
 const DEVANAGARI_DIGITS = '०१२३४५६७८९';
 
@@ -55,6 +57,13 @@ function digitsInToken(token: string): string | null {
   const whole = WORD_TO_DIGIT.get(token);
   if (whole !== undefined) return whole;
 
+  // ★ Not everyone reads a number digit by digit. "अठ्ठ्याण्णव सात सहा पाच"
+  //   is how a number is actually said out loud, and every one of those
+  //   two-digit words used to be invisible here — the run broke mid-number
+  //   and the field ended up with a fragment. See `numberWords.ts`.
+  const spelled = numberWordToDigits(token);
+  if (spelled !== null) return spelled;
+
   // A run of numerals, in either script: "9876543210" or "९८७६".
   let out = '';
   for (const ch of token) {
@@ -78,15 +87,29 @@ function digitsInToken(token: string): string | null {
 function digitRuns(transcript: string): string[] {
   const runs: string[] = [];
   let current = '';
+  // "डबल सात" / "double seven" — the word before a digit, saying it twice.
+  // It does not break the run and contributes nothing on its own.
+  let repeat = 1;
 
   for (const token of transcript.toLowerCase().split(/[\s,.\-–—/।!?]+/)) {
     if (token.length === 0) continue;
+
+    const times = repeatCount(token);
+    if (times !== null) {
+      repeat = times;
+      continue;
+    }
+
     const digits = digitsInToken(token);
     if (digits !== null) {
-      current += digits;
+      current += repeat > 1 ? digits.repeat(repeat) : digits;
+      repeat = 1;
     } else if (current.length > 0) {
       runs.push(current);
       current = '';
+      repeat = 1;
+    } else {
+      repeat = 1;
     }
   }
   if (current.length > 0) runs.push(current);
