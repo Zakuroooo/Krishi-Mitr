@@ -88,7 +88,7 @@ export default function S00_Splash({ navigation }: Props) {
           <View style={styles.emblemGlow} />
           {/* ★ This drew a leaf, a white bar, and the literal text "SETU" —
               the project's old name, on the first screen of an app called
-              Krishi Mitra. It is now the real mark: the same bridge shape the
+              Krishi Mitr. It is now the real mark: the same bridge shape the
               bar was gesturing at, with the sprout growing through it, drawn
               once in `components/ui/Logo` so the splash, the header and the
               tab bar cannot drift apart. */}
@@ -106,7 +106,7 @@ export default function S00_Splash({ navigation }: Props) {
 
         {/* ── 3. App name ───────────────────────────────────── */}
         {/* ★ One name. This rendered `splash_app_name` *and*
-            `splash_app_name_latin` — so an English farmer saw "Krishi Mitra"
+            `splash_app_name_latin` — so an English farmer saw "Krishi Mitr"
             with "KRISHI MITRA" stacked beneath it, and a Marathi one saw two
             scripts at once on the app's first screen. */}
         <Text style={styles.appName} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
@@ -181,7 +181,7 @@ export default function S00_Splash({ navigation }: Props) {
         {/* ★ Three "trust" cards sat here — both numbers always, it says when
             it does not know, buyers direct. They are the right three points
             and they are already made, at length and better, on the very next
-            screen ("Why Krishi Mitra"). Saying them twice was what pushed this
+            screen ("Why Krishi Mitr"). Saying them twice was what pushed this
             screen past one screenful and made it scroll. A splash that scrolls
             is a splash that has not decided what it is for. */}
       </View>

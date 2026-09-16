@@ -108,6 +108,12 @@ export function BuyerTabs() {
   const { t } = useT();
   return (
     <Tab.Navigator
+      // ★ The console opens on the matched lots, not on a blank demand form.
+      //   A trader's home is what is for sale right now; posting a new demand
+      //   is something he does occasionally. The approved Stitch design draws
+      //   जुळणी as the active tab for the same reason — and opening on मागणी
+      //   hid every bit of the redesign behind a tab nobody was told to press.
+      initialRouteName="Matches"
       screenOptions={{
         headerShown: false,
         // `sceneStyle`, not the v6 `sceneContainerStyle` prop — bottom-tabs v7

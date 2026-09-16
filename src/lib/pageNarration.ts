@@ -4,7 +4,7 @@
  * ★ Why this exists. The Home screen used to narrate by joining six
  *   label-and-value fragments with a full stop:
  *
- *       "Krishi Mitra. Today's rate: ₹2,054. +₹8. Hold.
+ *       "Krishi Mitr. Today's rate: ₹2,054. +₹8. Hold.
  *        Expected gain: ₹6,290. Worst case: ₹4,800."
  *
  *   That is a table read aloud. It never says how many days to hold, why the

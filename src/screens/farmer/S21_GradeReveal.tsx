@@ -18,7 +18,7 @@
  * ★ Not reproduced, for the usual reason: the "Fair Value Engine" price band
  *   with "5 Active Bidders in Niphad" (no field carries a bidder count, and
  *   the price band would be a forecast this screen never fetched), "Hash
- *   #LP94" (nothing is hashed), "Krishi Mitra 100% Escrow Guarantee" and
+ *   #LP94" (nothing is hashed), "Krishi Mitr 100% Escrow Guarantee" and
  *   "Mandi Board Escrow" (no such guarantee), "Top 15% arrivals today" (not
  *   computed anywhere), "Download Grade Certificate (PDF)" (no PDF is
  *   generated), and the "+₹3,200 Gain" from a two-day curing recommendation
