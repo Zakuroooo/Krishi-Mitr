@@ -6,6 +6,7 @@ import { getLocale } from '../../lib/locale';
 import { translate } from '../../lib/i18n';
 import { formatNumber } from '../../lib/money';
 import type { Locale } from '../../types/api';
+import { colors } from '../../theme/tokens';
 
 interface LedgerBlock {
   index: number;
@@ -88,20 +89,20 @@ export function S23_BuyerReliability() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 16 },
-  scoreCard: { padding: 20, backgroundColor: '#1B5E20' },
+  header: { fontSize: 20, fontWeight: '700', color: colors.onSurface, marginBottom: 16 },
+  scoreCard: { padding: 20, backgroundColor: colors.positiveSolid },
   row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  scoreTitle: { fontSize: 14, color: '#A5D6A7', fontWeight: '600' },
-  scoreNum: { fontSize: 32, fontWeight: '900', color: '#FFFFFF', marginVertical: 6 },
-  scoreSub: { fontSize: 13, color: '#C8E6C9' },
-  sectionTitle: { fontSize: 16, fontWeight: '700', color: '#475569', marginVertical: 14 },
+  scoreTitle: { fontSize: 14, color: colors.positiveContainer, fontWeight: '600' },
+  scoreNum: { fontSize: 32, fontWeight: '900', color: colors.surface, marginVertical: 6 },
+  scoreSub: { fontSize: 13, color: colors.positiveContainer },
+  sectionTitle: { fontSize: 16, fontWeight: '700', color: colors.onSurfaceVariant, marginVertical: 14 },
   blockCard: { padding: 16, marginBottom: 12 },
   blockHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
-  blockIndex: { fontSize: 14, fontWeight: '700', color: '#1565C0' },
-  blockTime: { fontSize: 12, color: '#64748B' },
-  blockAction: { fontSize: 15, fontWeight: '700', color: '#1E293B', marginBottom: 8 },
-  hashLabel: { fontSize: 11, fontWeight: '700', color: '#94A3B8', marginTop: 4 },
-  hashText: { fontSize: 11, fontFamily: 'monospace', color: '#475569', backgroundColor: '#F1F5F9', padding: 4, borderRadius: 4 },
+  blockIndex: { fontSize: 14, fontWeight: '700', color: colors.primary },
+  blockTime: { fontSize: 12, color: colors.onSurfaceVariant },
+  blockAction: { fontSize: 15, fontWeight: '700', color: colors.onSurface, marginBottom: 8 },
+  hashLabel: { fontSize: 11, fontWeight: '700', color: colors.outline, marginTop: 4 },
+  hashText: { fontSize: 11, fontFamily: 'monospace', color: colors.onSurfaceVariant, backgroundColor: colors.surfaceContainerLow, padding: 4, borderRadius: 4 },
 });

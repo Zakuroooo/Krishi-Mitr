@@ -30,6 +30,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { colors } from '../../theme/tokens';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
@@ -351,11 +352,11 @@ export function S25_Dispute({ txId = DEFAULT_TX_ID }: { txId?: string }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20 },
-  centre: { flex: 1, backgroundColor: '#F8FAF9', justifyContent: 'center', padding: 20 },
+  centre: { flex: 1, backgroundColor: colors.background, justifyContent: 'center', padding: 20 },
   gap: { marginBottom: 16 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 16 },
+  header: { fontSize: 20, fontWeight: '700', color: colors.onSurface, marginBottom: 16 },
   infoCard: { padding: 18, marginBottom: 16 },
   row: {
     flexDirection: 'row',
@@ -363,53 +364,53 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
-  txId: { fontSize: 16, fontWeight: '700', color: '#1E293B' },
-  amount: { fontSize: 18, fontWeight: '800', color: '#1B5E20' },
+  txId: { fontSize: 16, fontWeight: '700', color: colors.onSurface },
+  amount: { fontSize: 18, fontWeight: '800', color: colors.positiveSolid },
   formCard: { padding: 20, marginBottom: 16 },
-  sectionTitle: { fontSize: 17, fontWeight: '700', color: '#1E293B' },
+  sectionTitle: { fontSize: 17, fontWeight: '700', color: colors.onSurface },
   stageRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 12,
   },
-  label: { fontSize: 15, fontWeight: '600', color: '#334155', marginBottom: 8 },
-  disputedLine: { fontSize: 15, color: '#475569', lineHeight: 22, marginBottom: 12 },
-  mediationNote: { fontSize: 14, color: '#64748B', lineHeight: 21 },
+  label: { fontSize: 15, fontWeight: '600', color: colors.onSurfaceVariant, marginBottom: 8 },
+  disputedLine: { fontSize: 15, color: colors.onSurfaceVariant, lineHeight: 22, marginBottom: 12 },
+  mediationNote: { fontSize: 14, color: colors.onSurfaceVariant, lineHeight: 21 },
   timelineCard: { padding: 20 },
   eventRow: { marginTop: 14 },
-  eventStage: { fontSize: 15, fontWeight: '700', color: '#1E293B' },
-  eventDate: { fontSize: 13, color: '#94A3B8', marginTop: 2 },
-  eventNote: { fontSize: 14, color: '#475569', lineHeight: 21, marginTop: 4 },
-  noteCard: { padding: 20, backgroundColor: '#FFFBEB', borderColor: '#FDE68A' },
-  noteText: { fontSize: 15, color: '#92400E', lineHeight: 22 },
+  eventStage: { fontSize: 15, fontWeight: '700', color: colors.onSurface },
+  eventDate: { fontSize: 13, color: colors.outline, marginTop: 2 },
+  eventNote: { fontSize: 14, color: colors.onSurfaceVariant, lineHeight: 21, marginTop: 4 },
+  noteCard: { padding: 20, backgroundColor: colors.warningContainer, borderColor: colors.warningContainer },
+  noteText: { fontSize: 15, color: colors.warning, lineHeight: 22 },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16 },
   chip: {
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderField,
     borderRadius: 20,
     paddingVertical: 8,
     paddingHorizontal: 14,
     marginRight: 8,
     marginBottom: 8,
-    backgroundColor: '#FFF',
+    backgroundColor: colors.surface,
   },
-  chipSelected: { borderColor: '#1565C0', backgroundColor: '#E3F2FD' },
-  chipText: { fontSize: 14, fontWeight: '600', color: '#475569' },
-  chipTextSelected: { color: '#1565C0' },
+  chipSelected: { borderColor: colors.primary, backgroundColor: colors.surfaceContainerLow },
+  chipText: { fontSize: 14, fontWeight: '600', color: colors.onSurfaceVariant },
+  chipTextSelected: { color: colors.primary },
   // Without an explicit colour, typed Marathi renders near-white on white.
   input: {
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderField,
     borderRadius: 10,
     padding: 12,
     fontSize: 15,
-    color: '#1E293B',
-    backgroundColor: '#FFF',
+    color: colors.onSurface,
+    backgroundColor: colors.surface,
     textAlignVertical: 'top',
     height: 100,
     marginBottom: 12,
   },
-  validation: { fontSize: 14, color: '#C53030', marginBottom: 8 },
+  validation: { fontSize: 14, color: colors.criticalSolid, marginBottom: 8 },
   btn: { marginTop: 8 },
 });

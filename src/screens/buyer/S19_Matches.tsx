@@ -53,6 +53,7 @@ import { getLocale } from '../../lib/locale';
 import { translate } from '../../lib/i18n';
 import { formatBps, formatNumber, formatPaise, toQuintal } from '../../lib/money';
 import { USE_FIXTURES } from '../../config';
+import { colors, radius, space, type } from '../../theme/tokens';
 import { fxDemand } from '../../fixtures/demands';
 import { fxMatches } from '../../fixtures/matches';
 import type { DemandDto, Locale, MatchDto, MatchesRes } from '../../types/api';
@@ -306,40 +307,64 @@ function MatchCard({
   );
 }
 
+/**
+ * ★ Restyled onto `theme/tokens` — the Mandi Tactile Modern system the farmer
+ *   app and the Stitch design system both use. What was here before was the
+ *   pre-Stitch palette: a slate-and-blue console with a forest-green hero
+ *   number, which is why the buyer half of one product looked like a different
+ *   app. Not one layout decision changed; only where the colours come from.
+ */
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
-  content: { padding: 20, paddingBottom: 32 },
-  gap: { height: 12 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 12 },
-  demandCard: { padding: 16, marginBottom: 16, backgroundColor: '#E8F0FE' },
-  demandLine: { fontSize: 15, color: '#1E293B', fontWeight: '600' },
-  bidLine: { fontSize: 15, color: '#334155', marginTop: 6 },
-  bidValue: { fontSize: 17, fontWeight: '800', color: '#1565C0' },
-  matchCard: { padding: 18, marginBottom: 16 },
+  container: { flex: 1, backgroundColor: colors.background },
+  content: { padding: space.lg, paddingBottom: space.xxl },
+  gap: { height: space.sm },
+  header: { ...type.headlineMd, color: colors.onSurface, marginBottom: space.sm },
+  demandCard: {
+    padding: space.md,
+    marginBottom: space.md,
+    backgroundColor: colors.surfaceContainerLow,
+    borderWidth: 1,
+    borderColor: colors.borderCard,
+  },
+  demandLine: { ...type.titleMd, color: colors.onSurface },
+  bidLine: { ...type.bodyMd, color: colors.onSurfaceVariant, marginTop: space.xxs + 2 },
+  bidValue: { ...type.numeralData, color: colors.primary },
+  matchCard: { padding: space.md + 2, marginBottom: space.md },
   matchCardFull: {},
   // A bundle that leaves the order short is outlined, not hidden — same visual
   // language S16 uses for the pool that must not form.
-  matchCardPartial: { borderWidth: 1, borderColor: '#FEB2B2' },
-  cardHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
-  fillNum: { fontSize: 30, fontWeight: '800', color: '#1B5E20' },
-  fillLabel: { fontSize: 15, color: '#475569', fontWeight: '600', marginTop: 2 },
-  shortfallNote: { fontSize: 15, color: '#C53030', fontWeight: '600', marginTop: 8, lineHeight: 21 },
-  qtyText: { fontSize: 15, color: '#334155', fontWeight: '600', marginTop: 10 },
-  metaText: { fontSize: 14, color: '#64748B', marginTop: 2 },
-  divider: { height: 1, backgroundColor: '#E2E8F0', marginVertical: 12 },
-  sectionLabel: { fontSize: 13, fontWeight: '700', color: '#64748B', marginBottom: 6 },
-  lotRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 4 },
-  lotLabel: { flex: 1, fontSize: 14, color: '#1E293B', marginRight: 8 },
-  lotId: { fontSize: 13, color: '#64748B' },
-  lotQty: { fontSize: 14, fontWeight: '700', color: '#1565C0' },
-  reasonText: {
-    fontSize: 14,
-    color: '#2E7D32',
-    marginTop: 12,
-    backgroundColor: '#F1F8E9',
-    padding: 10,
-    borderRadius: 6,
-    lineHeight: 20,
+  matchCardPartial: { borderWidth: 1.5, borderColor: colors.criticalSolid },
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: space.sm,
   },
-  actionBtn: { marginTop: 12 },
+  fillNum: { ...type.numeralHero, color: colors.positiveSolid },
+  fillLabel: { ...type.bodyLg, color: colors.onSurfaceVariant, marginTop: 2 },
+  // I16's rule borrowed: the shortfall matches the label above it in size and
+  // weight. Only the colour separates them.
+  shortfallNote: { ...type.bodyLg, color: colors.criticalSolid, marginTop: space.xs },
+  qtyText: { ...type.titleMd, color: colors.onSurface, marginTop: space.xs + 2 },
+  metaText: { ...type.bodySm, color: colors.onSurfaceVariant, marginTop: 2 },
+  divider: { height: 1, backgroundColor: colors.borderCard, marginVertical: space.sm },
+  sectionLabel: { ...type.labelMd, color: colors.onSurfaceVariant, marginBottom: space.xxs + 2 },
+  lotRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: space.xxs,
+  },
+  lotLabel: { flex: 1, ...type.bodySm, color: colors.onSurface, marginRight: space.xs },
+  lotId: { ...type.bodySm, color: colors.onSurfaceVariant },
+  lotQty: { ...type.labelLg, color: colors.primary },
+  reasonText: {
+    ...type.bodySm,
+    color: colors.onPositiveContainer,
+    marginTop: space.sm,
+    backgroundColor: colors.positiveContainer,
+    padding: space.xs + 2,
+    borderRadius: radius.md,
+  },
+  actionBtn: { marginTop: space.sm },
 });

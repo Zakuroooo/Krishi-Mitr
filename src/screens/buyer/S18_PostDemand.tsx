@@ -6,6 +6,7 @@ import { getLocale } from '../../lib/locale';
 import { translate } from '../../lib/i18n';
 import { formatNumber } from '../../lib/money';
 import type { Locale } from '../../types/api';
+import { colors } from '../../theme/tokens';
 
 export function S18_PostDemand({ onDemandCreated }: { onDemandCreated?: () => void }) {
   const [locale, setLocale] = useState<Locale>('mr');
@@ -114,45 +115,45 @@ export function S18_PostDemand({ onDemandCreated }: { onDemandCreated?: () => vo
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20 },
-  title: { fontSize: 22, fontWeight: '700', color: '#1E293B', marginBottom: 16 },
+  title: { fontSize: 22, fontWeight: '700', color: colors.onSurface, marginBottom: 16 },
   formCard: { padding: 20 },
-  label: { fontSize: 15, fontWeight: '600', color: '#475569', marginTop: 12, marginBottom: 6 },
+  label: { fontSize: 15, fontWeight: '600', color: colors.onSurfaceVariant, marginTop: 12, marginBottom: 6 },
   input: {
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderField,
     borderRadius: 10,
     padding: 12,
     fontSize: 16,
-    backgroundColor: '#FFF',
+    backgroundColor: colors.surface,
   },
   row: { flexDirection: 'row', gap: 10, marginBottom: 8 },
   chip: {
     flex: 1,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderField,
     borderRadius: 10,
     alignItems: 'center',
   },
-  chipActive: { borderColor: '#1B5E20', backgroundColor: '#E8F5E9' },
-  chipText: { fontSize: 14, color: '#64748B', fontWeight: '600' },
-  chipTextActive: { color: '#1B5E20' },
+  chipActive: { borderColor: colors.positiveSolid, backgroundColor: colors.positiveContainer },
+  chipText: { fontSize: 14, color: colors.onSurfaceVariant, fontWeight: '600' },
+  chipTextActive: { color: colors.positiveSolid },
   gradeChip: {
     flex: 1,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: colors.borderField,
     borderRadius: 10,
     alignItems: 'center',
   },
-  gradeChipActive: { borderColor: '#1565C0', backgroundColor: '#E3F2FD' },
-  gradeText: { fontSize: 14, color: '#64748B', fontWeight: '600' },
-  gradeTextActive: { color: '#1565C0' },
+  gradeChipActive: { borderColor: colors.primary, backgroundColor: colors.surfaceContainerLow },
+  gradeText: { fontSize: 14, color: colors.onSurfaceVariant, fontWeight: '600' },
+  gradeTextActive: { color: colors.primary },
   submitBtn: { marginTop: 24 },
-  successCard: { padding: 24, backgroundColor: '#E8F5E9', borderColor: '#81C784' },
-  successTitle: { fontSize: 20, fontWeight: '700', color: '#1B5E20', marginBottom: 8 },
-  successText: { fontSize: 15, color: '#2E7D32', marginBottom: 16 },
+  successCard: { padding: 24, backgroundColor: colors.positiveContainer, borderColor: colors.positiveSolid },
+  successTitle: { fontSize: 20, fontWeight: '700', color: colors.positiveSolid, marginBottom: 8 },
+  successText: { fontSize: 15, color: colors.positiveSolid, marginBottom: 16 },
   btn: { marginTop: 8 },
 });

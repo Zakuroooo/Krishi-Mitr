@@ -25,11 +25,21 @@ import { S24_DataProvenance } from '../screens/buyer/S24_DataProvenance';
 import { S25_Dispute } from '../screens/buyer/S25_Dispute';
 import { S27_BuyerChat } from '../screens/buyer/S27_BuyerChat';
 import { useT } from '../lib/i18n';
+import { colors, fontFamily } from '../theme/tokens';
 import { tabIcon } from './TabIcon';
 import { TabBarButton } from './TabBarButton';
 
-/** The one background colour for every buyer scene. Matches `FarmerTabs`. */
-const SCREEN_BG = '#FFFFFF';
+/**
+ * ★ The buyer console was still wearing the pre-Stitch palette — white scenes,
+ *   a blue active tab, slate labels — while the farmer app had moved to the
+ *   approved Mandi Tactile Modern system. Two products under one name, and the
+ *   buyer half looked like a different, older app.
+ *
+ *   Every colour here now comes from `theme/tokens`, which is the same file
+ *   the farmer screens read and the same palette the Stitch design system
+ *   defines. A hex literal in this file is drift, not a local choice.
+ */
+const SCREEN_BG = colors.background;
 
 export type BuyerTabParamList = {
   PostDemand: undefined;
@@ -90,13 +100,25 @@ export function BuyerTabs() {
         // `sceneStyle`, not the v6 `sceneContainerStyle` prop — bottom-tabs v7
         // moved it into `screenOptions` and dropped the old name entirely.
         sceneStyle: { backgroundColor: SCREEN_BG },
-        tabBarActiveTintColor: '#1565C0',
-        tabBarInactiveTintColor: '#64748B',
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.onSurfaceVariant,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontFamily: fontFamily.semiBold,
+          // Devanagari tab labels clip their matras at the stock line height.
+          lineHeight: 15,
+        },
         // Same reason as the farmer bar: Android's default borderless ripple
         // paints outside the tab. See `TabBarButton`.
         tabBarButton: props => <TabBarButton {...props} />,
-        tabBarStyle: { height: 60, paddingBottom: 4, paddingTop: 4 },
+        tabBarStyle: {
+          height: 64,
+          paddingBottom: 6,
+          paddingTop: 6,
+          backgroundColor: colors.surface,
+          borderTopWidth: 1.5,
+          borderTopColor: colors.borderInput,
+        },
       }}>
       <Tab.Screen
         name="PostDemand"

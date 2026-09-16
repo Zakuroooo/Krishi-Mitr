@@ -45,6 +45,7 @@ import { formatDate } from '../../lib/dates';
 import { USE_FIXTURES } from '../../config';
 import { fxProvenance } from '../../fixtures/provenance';
 import type { DataSource, Locale, ProvenanceRes, ProvenanceRow } from '../../types/api';
+import { colors } from '../../theme/tokens';
 
 /**
  * I8's allowlist, stated once. "The UI badges anything not
@@ -266,30 +267,30 @@ export function S24_DataProvenance() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20, paddingBottom: 32 },
   gap: { height: 12 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 8 },
-  i8Rule: { fontSize: 13, color: '#475569', lineHeight: 20, marginBottom: 16 },
-  summaryCard: { padding: 20, backgroundColor: '#1B5E20' },
-  summaryLabel: { fontSize: 14, color: '#A5D6A7', fontWeight: '600' },
-  totalNum: { fontSize: 32, fontWeight: '900', color: '#FFFFFF', marginVertical: 4 },
-  subNote: { fontSize: 13, color: '#C8E6C9', marginTop: 2 },
-  splitNote: { fontSize: 14, color: '#FFFFFF', fontWeight: '700', marginTop: 8 },
-  sectionTitle: { fontSize: 16, fontWeight: '700', color: '#475569', marginVertical: 14 },
+  header: { fontSize: 20, fontWeight: '700', color: colors.onSurface, marginBottom: 8 },
+  i8Rule: { fontSize: 13, color: colors.onSurfaceVariant, lineHeight: 20, marginBottom: 16 },
+  summaryCard: { padding: 20, backgroundColor: colors.positiveSolid },
+  summaryLabel: { fontSize: 14, color: colors.positiveContainer, fontWeight: '600' },
+  totalNum: { fontSize: 32, fontWeight: '900', color: colors.surface, marginVertical: 4 },
+  subNote: { fontSize: 13, color: colors.positiveContainer, marginTop: 2 },
+  splitNote: { fontSize: 14, color: colors.surface, fontWeight: '700', marginTop: 8 },
+  sectionTitle: { fontSize: 16, fontWeight: '700', color: colors.onSurfaceVariant, marginVertical: 14 },
   sourceCard: { padding: 16, marginBottom: 12 },
   rowOfficial: {},
   // Same border the Pareto-violation row uses on S16 — one visual language for
   // "this needs reading, not skipping".
-  rowFlagged: { borderWidth: 1, borderColor: '#FEB2B2', backgroundColor: '#FFF5F5' },
+  rowFlagged: { borderWidth: 1, borderColor: colors.criticalContainer, backgroundColor: colors.criticalContainer },
   sourceHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
-  rowTitle: { flex: 1, fontSize: 15, fontWeight: '700', color: '#1E293B', marginRight: 8 },
-  percentText: { fontSize: 18, fontWeight: '800', color: '#1E293B' },
-  countText: { fontSize: 15, color: '#334155', marginTop: 4 },
-  bold: { fontWeight: '700', color: '#1E293B' },
-  dateText: { fontSize: 13, color: '#64748B', marginTop: 2 },
-  unofficialNote: { fontSize: 13, color: '#C53030', fontWeight: '600', marginTop: 8, lineHeight: 19 },
-  noUrlText: { fontSize: 13, color: '#C53030', fontWeight: '600', marginTop: 10, lineHeight: 19 },
-  urlBtn: { marginTop: 10, paddingTop: 6, borderTopWidth: 1, borderTopColor: '#F1F5F9' },
-  urlText: { fontSize: 13, color: '#1565C0', fontWeight: '600' },
+  rowTitle: { flex: 1, fontSize: 15, fontWeight: '700', color: colors.onSurface, marginRight: 8 },
+  percentText: { fontSize: 18, fontWeight: '800', color: colors.onSurface },
+  countText: { fontSize: 15, color: colors.onSurfaceVariant, marginTop: 4 },
+  bold: { fontWeight: '700', color: colors.onSurface },
+  dateText: { fontSize: 13, color: colors.onSurfaceVariant, marginTop: 2 },
+  unofficialNote: { fontSize: 13, color: colors.criticalSolid, fontWeight: '600', marginTop: 8, lineHeight: 19 },
+  noUrlText: { fontSize: 13, color: colors.criticalSolid, fontWeight: '600', marginTop: 10, lineHeight: 19 },
+  urlBtn: { marginTop: 10, paddingTop: 6, borderTopWidth: 1, borderTopColor: colors.surfaceContainerLow },
+  urlText: { fontSize: 13, color: colors.primary, fontWeight: '600' },
 });

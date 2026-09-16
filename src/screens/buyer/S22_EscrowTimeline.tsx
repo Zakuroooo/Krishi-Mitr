@@ -22,6 +22,7 @@ import { fxEscrowEvents, fxTx } from '../../fixtures/escrow';
 import { EscrowTimeline } from '../../components/EscrowTimeline';
 import { EmptyState, ErrorState, Skeleton } from '../../components/farmer/States';
 import type { EscrowEvent, Locale, TxDto } from '../../types/api';
+import { colors } from '../../theme/tokens';
 
 /** No lot-detail/offer-thread flow exists yet to arrive here with a real
  * `tx_id` (S20/S21 gap, same shape as `DEFAULT_LOT_ID` elsewhere) — this is
@@ -81,7 +82,7 @@ export function S22_EscrowTimeline() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 16 },
+  header: { fontSize: 20, fontWeight: '700', color: colors.onSurface, marginBottom: 16 },
 });

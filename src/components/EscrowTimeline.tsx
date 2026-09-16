@@ -37,6 +37,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { formatPaise } from '../lib/money';
 import { devNum, translate } from '../lib/i18n';
 import type { EscrowEvent, Locale, TxDto, TxStatus } from '../types/api';
+import { colors } from '../theme/tokens';
 
 export interface EscrowTimelineProps {
   tx: TxDto;
@@ -162,15 +163,15 @@ const styles = StyleSheet.create({
   txCard: {
     padding: 16,
     borderRadius: 12,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.background,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.borderCard,
     marginBottom: 16,
   },
   row: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6, alignItems: 'center' },
-  txId: { fontSize: 14, fontWeight: '700', color: '#1E293B' },
-  statusBadgeText: { fontSize: 12, fontWeight: '700', color: '#E65100' },
-  txAmount: { fontSize: 16, fontWeight: '800', color: '#1B5E20' },
+  txId: { fontSize: 14, fontWeight: '700', color: colors.onSurface },
+  statusBadgeText: { fontSize: 12, fontWeight: '700', color: colors.primaryContainer },
+  txAmount: { fontSize: 16, fontWeight: '800', color: colors.positiveSolid },
   timeline: { paddingLeft: 8 },
   stepRow: { flexDirection: 'row', marginBottom: 16 },
   indicatorCol: { alignItems: 'center', width: 32 },
@@ -178,20 +179,20 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: '#CBD5E1',
+    backgroundColor: colors.borderField,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  dotCompleted: { backgroundColor: '#2E7D32' },
-  dotActive: { backgroundColor: '#E65100', borderWidth: 2, borderColor: '#FFF8E1' },
-  dotOffRail: { backgroundColor: '#C53030' },
-  dotIcon: { color: '#FFF', fontSize: 11, fontWeight: '700' },
-  line: { width: 2, flex: 1, backgroundColor: '#E2E8F0', marginTop: 4, minHeight: 8 },
-  lineCompleted: { backgroundColor: '#81C784' },
+  dotCompleted: { backgroundColor: colors.positiveSolid },
+  dotActive: { backgroundColor: colors.primaryContainer, borderWidth: 2, borderColor: colors.warningContainer },
+  dotOffRail: { backgroundColor: colors.criticalSolid },
+  dotIcon: { color: colors.surface, fontSize: 11, fontWeight: '700' },
+  line: { width: 2, flex: 1, backgroundColor: colors.borderCard, marginTop: 4, minHeight: 8 },
+  lineCompleted: { backgroundColor: colors.positiveSolid },
   contentCol: { flex: 1, paddingLeft: 12 },
-  stepLabel: { fontSize: 15, fontWeight: '700', color: '#334155' },
-  activeText: { color: '#E65100' },
-  offRailText: { color: '#C53030' },
-  stepDesc: { fontSize: 13, color: '#64748B', marginTop: 2 },
-  timeText: { fontSize: 11, color: '#94A3B8', marginTop: 3 },
+  stepLabel: { fontSize: 15, fontWeight: '700', color: colors.onSurfaceVariant },
+  activeText: { color: colors.primaryContainer },
+  offRailText: { color: colors.criticalSolid },
+  stepDesc: { fontSize: 13, color: colors.onSurfaceVariant, marginTop: 2 },
+  timeText: { fontSize: 11, color: colors.outline, marginTop: 3 },
 });
