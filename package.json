@@ -5,7 +5,7 @@
   "description": "Krishi Mitr — the farmer and buyer web app, built from the same React Native source as the mobile app.",
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && node scripts/copy-static.js",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

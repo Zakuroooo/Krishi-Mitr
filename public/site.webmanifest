@@ -1,0 +1,37 @@
+{
+  "name": "Krishi Mitr",
+  "short_name": "Krishi Mitr",
+  "description": "Sell today, or wait? Real mandi prices, a plain answer, and the worst case shown at the same size as the gain — in Marathi, Hindi or English.",
+  "lang": "mr",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF6EE",
+  "theme_color": "#9B2F00",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

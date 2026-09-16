@@ -49,6 +49,35 @@ npm run build      # -> dist/
 
 Node 18+.
 
+`npm run build` is webpack followed by `scripts/copy-static.js`, which copies
+everything in `public/` except `index.html` into `dist/`. HtmlWebpackPlugin
+emits the HTML but knows nothing about the files beside it, so without that
+step the favicon, the manifest and the social image are referenced by the page
+and 404 in production.
+
+## Icons and metadata
+
+One drawing, `public/favicon.svg` — the same mark `src/components/ui/Logo.tsx`
+draws, with the disc widened to the box edge because transparent corners on a
+browser tab read as a chipped icon. The rasters are generated from it rather
+than drawn again:
+
+| File | Size | Where it shows |
+|---|---|---|
+| `favicon.svg` | any | Browser tab, modern browsers |
+| `favicon-32.png` | 32 | Older browsers |
+| `apple-touch-icon.png` | 180 | iOS home screen |
+| `icon-192.png` / `icon-512.png` | 192 / 512 | Android home screen, PWA install |
+| `og-image.png` | 1200×630 | WhatsApp, X and Slack link previews |
+
+`og-image.png` is rendered from `scripts/og-image.html`. It matters more here
+than usual: this link travels by WhatsApp, not by search, and a bare URL in a
+farmer group is a link nobody taps. The preview shows both figures at the same
+size, because I16 holds in a link preview too.
+
+`site.webmanifest` makes the site installable — Marathi as the language,
+parchment as the splash background, terracotta as the theme colour.
+
 ## What is real and what is a fixture
 
 `src/config.ts` has `USE_FIXTURES = true`, so every screen renders from
@@ -86,10 +115,12 @@ No console errors on any of the three.
 
 Two limits worth knowing before a demo:
 
-- **One URL.** Navigation is React Navigation's in-memory stack, as on the
-  phone, so every screen lives at `/` and a refresh returns to the landing
-  page. Deep links per screen would need a linking config, which is a change
-  the phone build does not need and has not been made.
+- ~~**One URL.**~~ **Fixed.** Every screen now has a path — `/start`,
+  `/language`, `/app/home/verdict`, `/trader/matches/lot/:lot_id` — via
+  `src/navigation/webLinking.ts`. A refresh keeps you where you were, screens
+  can be linked to, and the browser's back button goes back one screen instead
+  of leaving the site. Verified against production: those paths answer 200 and
+  mount the right screen.
 - **Voice needs a browser that has the language.** Sarvam is the real voice and
   it needs the API; without it the fallback is the browser's own speech engine,
   whose Marathi and Hindi coverage varies by device. The app reports that
