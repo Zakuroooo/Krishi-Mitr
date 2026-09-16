@@ -38,7 +38,13 @@ const babelLoaderConfiguration = {
         ['@babel/preset-react', { runtime: 'automatic' }],
         '@babel/preset-typescript',
       ],
-      plugins: ['react-native-web'],
+      // ★ No `react-native-web` babel plugin here, deliberately. It rewrites
+      //   every `from 'react-native'` to a deep path inside react-native-web,
+      //   which is a bundle-size win and which also routes straight past the
+      //   `react-native$` alias below — and that alias is what supplies
+      //   `PermissionsAndroid`. Resolution has to go through one door for the
+      //   shim to mean anything.
+      plugins: [],
     },
   },
 };
@@ -61,7 +67,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-native$': 'react-native-web',
+      // Everything react-native-web exports, plus PermissionsAndroid, which it
+      // does not — see the shim's header for why that one absence blanked the
+      // entire page.
+      'react-native$': path.resolve(appDirectory, 'src/web-shims/react-native.ts'),
 
       // The native modules. Each shim exports the same surface the screens
       // already call, backed by a browser API — see src/web-shims/README.md.
