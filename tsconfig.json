@@ -1,0 +1,42 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+
+    // The three the RN template leaves off. Each one has caught a real bug in a
+    // React Native codebase before:
+    //
+    //   noUncheckedIndexedAccess  — `points[0]` is `T | undefined`. Forecast arrays
+    //                               come from the network and can be empty; this is
+    //                               what stops `points[0].p50` from shipping.
+    //   exactOptionalPropertyTypes — an optional key cannot be set to `undefined`,
+    //                               which keeps "absent" and "present but null"
+    //                               distinct. CANON returns null, never absent.
+    //   noFallthroughCasesInSwitch — the S9 verdict switch has five arms.
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // ★ `noUnusedLocals` is deliberately off, and it is the one flag here I removed
+    //   rather than added.
+    //
+    //   The base config sets `jsx: "react-jsx"` (the automatic runtime), under which
+    //   `import React from 'react'` is genuinely unused in any file that never writes
+    //   `React.something`. That is most screens. Turning the flag on means every one
+    //   of us gets a TS6133 for a line we all type by reflex — and a `tsc --noEmit`
+    //   that is red on day one is a `tsc --noEmit` nobody runs by day two.
+    //
+    //   ESLint ships with the template and already flags actually-unused variables,
+    //   with the React import excepted. We keep the check and drop the noise.
+
+    "skipLibCheck": true,
+    "types": ["jest", "react-native"],
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "App.tsx", "index.js"],
+  "exclude": ["node_modules", "android", "ios", "**/*.test.ts", "**/__tests__/**"]
+}
