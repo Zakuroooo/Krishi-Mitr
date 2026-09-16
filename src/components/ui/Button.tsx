@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import {
   ActivityIndicator,
   StyleSheet,
@@ -58,7 +59,7 @@ export function Button({
       style={containerStyles}
       {...props}>
       {loading ? (
-        <ActivityIndicator color={isPrimary ? '#FFFFFF' : '#1B5E20'} />
+        <ActivityIndicator color={isPrimary ? colors.onPrimary : colors.primaryContainer} />
       ) : (
         <Text style={labelStyles}>{title}</Text>
       )}
@@ -77,10 +78,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   primary: {
-    backgroundColor: '#1B5E20',
+    backgroundColor: colors.primaryContainer,
   },
   secondary: {
-    backgroundColor: '#E8F5E9',
+    backgroundColor: colors.onPrimaryContainer,
   },
   ghost: {
     backgroundColor: 'transparent',
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
   outline: {
     backgroundColor: 'transparent',
     borderWidth: 1.5,
-    borderColor: '#1B5E20',
+    borderColor: colors.primaryContainer,
   },
   disabled: {
     opacity: 0.5,
@@ -99,18 +100,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   primaryLabel: {
-    color: '#FFFFFF',
+    color: colors.onPrimary,
   },
   secondaryLabel: {
-    color: '#1B5E20',
+    color: colors.primaryContainer,
   },
   ghostLabel: {
-    color: '#1B5E20',
+    color: colors.primaryContainer,
   },
   outlineLabel: {
-    color: '#1B5E20',
+    color: colors.primaryContainer,
   },
   disabledLabel: {
-    color: '#888888',
+    color: colors.outline,
   },
 });

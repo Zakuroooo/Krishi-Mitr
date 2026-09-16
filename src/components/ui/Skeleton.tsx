@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 
 export interface SkeletonProps {
@@ -27,7 +28,7 @@ export function Skeleton({
 
 const styles = StyleSheet.create({
   skeleton: {
-    backgroundColor: '#E2E8F0',
+    backgroundColor: colors.borderCard,
     marginVertical: 4,
   },
 });

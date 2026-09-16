@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from './Button';
 
@@ -39,11 +40,11 @@ const styles = StyleSheet.create({
     padding: 32,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.surface,
     borderRadius: 16,
     marginVertical: 16,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: colors.borderCard,
   },
   iconContainer: {
     marginBottom: 16,
@@ -51,13 +52,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#1E293B',
+    color: colors.onSurface,
     textAlign: 'center',
     marginBottom: 8,
   },
   description: {
     fontSize: 15,
-    color: '#64748B',
+    color: colors.onSurfaceVariant,
     textAlign: 'center',
     marginBottom: 24,
     lineHeight: 22,

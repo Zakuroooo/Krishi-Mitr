@@ -1,4 +1,5 @@
 import React from 'react';
+import { colors } from '../../theme/tokens';
 import { StyleSheet, Text, View, ViewStyle, TextStyle } from 'react-native';
 
 export type BadgeType =
@@ -90,45 +91,45 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   success: {
-    backgroundColor: '#E8F5E9',
+    backgroundColor: colors.positiveContainer,
   },
   successText: {
-    color: '#2E7D32',
+    color: colors.positiveSolid,
   },
   warning: {
-    backgroundColor: '#FFF3E0',
+    backgroundColor: colors.warningContainer,
   },
   warningText: {
-    color: '#E65100',
+    color: colors.warning,
   },
   archive: {
-    backgroundColor: '#ECEFF1',
+    backgroundColor: colors.surfaceContainerHigh,
   },
   archiveText: {
-    color: '#455A64',
+    color: colors.onSurfaceVariant,
   },
   gradeA: {
-    backgroundColor: '#E8F5E9',
+    backgroundColor: colors.positiveContainer,
   },
   gradeAText: {
-    color: '#1B5E20',
+    color: colors.positiveSolid,
   },
   gradeB: {
-    backgroundColor: '#E3F2FD',
+    backgroundColor: colors.surfaceContainerLow,
   },
   gradeBText: {
-    color: '#1565C0',
+    color: colors.onSurfaceVariant,
   },
   gradeC: {
-    backgroundColor: '#FFF8E1',
+    backgroundColor: colors.warningContainer,
   },
   gradeCText: {
-    color: '#F57F17',
+    color: colors.warning,
   },
   info: {
-    backgroundColor: '#F1F5F9',
+    backgroundColor: colors.surfaceContainerLow,
   },
   infoText: {
-    color: '#475569',
+    color: colors.onSurfaceVariant,
   },
 });
