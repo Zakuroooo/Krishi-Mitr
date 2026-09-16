@@ -25,6 +25,7 @@ import { S24_DataProvenance } from '../screens/buyer/S24_DataProvenance';
 import { S25_Dispute } from '../screens/buyer/S25_Dispute';
 import { S27_BuyerChat } from '../screens/buyer/S27_BuyerChat';
 import { useT } from '../lib/i18n';
+import { useAuth } from '../lib/auth';
 import { colors, fontFamily } from '../theme/tokens';
 import { tabIcon } from './TabIcon';
 import { TabBarButton } from './TabBarButton';
@@ -71,13 +72,25 @@ export type MatchesStackParamList = {
 const MatchesStack = createNativeStackNavigator<MatchesStackParamList>();
 
 function MatchesStackNavigator() {
+  // ★ The Stitch design opens with who the trader is and which yard is live.
+  //   Both come from state this navigator already holds — the signed-in user
+  //   and the demo market — rather than from anything the screen invents. When
+  //   either is missing, S19 omits that row instead of showing a placeholder.
+  const { user } = useAuth();
+  const { t } = useT();
+
   return (
     <MatchesStack.Navigator
       initialRouteName="S19_Matches"
       screenOptions={{ headerShown: false, contentStyle: { backgroundColor: SCREEN_BG } }}>
       <MatchesStack.Screen name="S19_Matches">
         {({ navigation }: NativeStackScreenProps<MatchesStackParamList, 'S19_Matches'>) => (
-          <S19_Matches onViewLot={lotId => navigation.navigate('S20_LotDetail', { lot_id: lotId })} />
+          <S19_Matches
+            onViewLot={lotId => navigation.navigate('S20_LotDetail', { lot_id: lotId })}
+            // `exactOptionalPropertyTypes` — spread rather than pass undefined.
+            {...(user?.name ? { traderName: user.name } : {})}
+            marketName={t('home_market_name')}
+          />
         )}
       </MatchesStack.Screen>
       <MatchesStack.Screen name="S20_LotDetail">

@@ -30,6 +30,18 @@ export const fxMatches: MatchesRes = {
       score: 0.91,
       why_mr: 'पूर्ण मागणी भरते — एक FPO गट + २ शेतकरी',
       why_en: 'Fills the full order — one FPO batch + 2 farmers',
+      // ★ The buyer-facing detail the approved design shows. Sample data, and
+      //   the screen says so in words (I8) — these fields are optional on
+      //   `MatchDto` precisely because the server does not send them yet.
+      lot_ref: 'A-2288',
+      farmer_label: 'ज्ञानेश्वर शिंदे',
+      village: 'पिंपळगाव',
+      asking_paise_per_qtl: 198000,
+      market_paise_per_qtl: 199000,
+      moisture_pct: 11.4,
+      bags: 160,
+      pickup_at_farm: false,
+      assayed: false,
     },
     {
       kind: 'SINGLE',
@@ -44,6 +56,15 @@ export const fxMatches: MatchesRes = {
       score: 0.87,
       why_mr: 'जवळचे अंतर, ग्रेड A',
       why_en: 'Nearby, grade A',
+      lot_ref: 'A-2291',
+      farmer_label: 'रामभाऊ पाटील',
+      village: 'निफाड',
+      asking_paise_per_qtl: 215000,
+      market_paise_per_qtl: 205400,
+      moisture_pct: 9.2,
+      bags: 80,
+      pickup_at_farm: true,
+      assayed: true,
     },
   ],
 };
