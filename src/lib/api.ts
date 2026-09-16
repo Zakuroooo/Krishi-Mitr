@@ -406,6 +406,19 @@ export const getDataProvenance = () => get<ProvenanceRes>('/meta/data-provenance
  * multipart body (and would stop `fetch` from setting its own boundary).
  */
 export async function transcribeAudio(audioUri: string, locale: Locale): Promise<{ transcript: string }> {
+  // ★ The browser takes a different road to the same route.
+  //
+  //   React Native's `FormData` streams a file off disk when handed a `{uri,
+  //   type, name}` object. A browser's `FormData` does not — it silently
+  //   serialises that object as the string "[object Object]", and the server
+  //   receives a text field where a recording should be. The mic appeared to
+  //   work and every transcript came back empty.
+  //
+  //   On the web the recorder hands back a `blob:` URL, so the blob is read
+  //   and posted as base64 JSON, which `api/v1/voice/transcribe.ts` rebuilds
+  //   into a file on the way to Sarvam.
+  if (typeof document !== 'undefined') return transcribeAudioInBrowser(audioUri, locale);
+
   const token = await getToken();
   const form = new FormData();
   // React Native's `FormData` accepts this `{uri, type, name}` shape in
@@ -439,6 +452,78 @@ export async function transcribeAudio(audioUri: string, locale: Locale): Promise
     );
   }
   return (await res.json()) as { transcript: string };
+}
+
+/**
+ * The web half of `transcribeAudio`.
+ *
+ * ★ `locale` is passed through and matters more than it looks: it becomes
+ *   Sarvam's `language_code`. A farmer who picked Marathi and then said his
+ *   number in Marathi was being transcribed against the wrong language, which
+ *   is why the OTP and phone fields stayed empty however clearly he spoke.
+ */
+async function transcribeAudioInBrowser(
+  audioUri: string,
+  locale: Locale,
+): Promise<{ transcript: string }> {
+  const token = await getToken();
+
+  const blob = await (await fetch(audioUri)).blob();
+  const audio_base64 = await blobToBase64(blob);
+
+  const res = await fetch(`${API_BASE_URL}/voice/transcribe`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify({ audio_base64, mime_type: blob.type || 'audio/webm', locale }),
+  });
+
+  if (!res.ok) {
+    const body = (await res.json().catch(() => null)) as ApiErrorBody | null;
+    throw new ApiError(
+      body?.error?.code ?? 'NETWORK',
+      body?.error?.message ?? `HTTP ${res.status}`,
+      res.status,
+      body?.error?.field ?? null,
+    );
+  }
+
+  const data = (await res.json()) as {
+    transcript: string;
+    language_code?: string;
+    requested_language_code?: string;
+  };
+
+  // Dev-only, and worth the noise: when these disagree the recogniser heard a
+  // different language than the farmer chose, which is the single most likely
+  // reason a spoken number does not land in the field.
+  if (__DEV__ && data.language_code && data.requested_language_code &&
+      data.language_code !== data.requested_language_code) {
+    console.warn(
+      `[voice] asked for ${data.requested_language_code}, Sarvam heard ${data.language_code}`,
+    );
+  }
+
+  return { transcript: data.transcript };
+}
+
+/** `FileReader` rather than `btoa`: a minute of audio overflows the argument
+ *  limit of `String.fromCharCode(...bytes)`, and does so only on long
+ *  recordings, which is the worst way to find a bug. */
+function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('could not read the recording'));
+    reader.onload = () => {
+      const result = String(reader.result);
+      const comma = result.indexOf(',');
+      resolve(comma >= 0 ? result.slice(comma + 1) : result);
+    };
+    reader.readAsDataURL(blob);
+  });
 }
 
 /**
