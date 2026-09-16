@@ -44,6 +44,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { colors } from '../../theme/tokens';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 
@@ -367,32 +368,32 @@ function AssayBreakdown({ assay, locale }: { assay: AssayRecord; locale: Locale 
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20, paddingBottom: 32 },
   gap: { height: 12 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 16 },
+  header: { fontSize: 20, fontWeight: '700', color: colors.onSurface, marginBottom: 16 },
   mainCard: { padding: 20 },
   badgeRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 },
-  lotId: { fontSize: 18, fontWeight: '800', color: '#1E293B' },
-  farmerRef: { fontSize: 13, color: '#64748B', marginTop: 4 },
-  qtyText: { fontSize: 16, fontWeight: '700', color: '#1B5E20', marginTop: 10 },
-  metaText: { fontSize: 14, color: '#475569', marginTop: 4 },
+  lotId: { fontSize: 18, fontWeight: '800', color: colors.onSurface },
+  farmerRef: { fontSize: 13, color: colors.onSurfaceVariant, marginTop: 4 },
+  qtyText: { fontSize: 16, fontWeight: '700', color: colors.positiveSolid, marginTop: 10 },
+  metaText: { fontSize: 14, color: colors.onSurfaceVariant, marginTop: 4 },
   assayCard: { padding: 20, marginTop: 16 },
-  sectionTitle: { fontSize: 15, fontWeight: '700', color: '#334155', marginBottom: 10 },
-  assayNote: { fontSize: 14, color: '#64748B', lineHeight: 20 },
-  scoreLine: { fontSize: 16, fontWeight: '700', color: '#1565C0', marginBottom: 10 },
+  sectionTitle: { fontSize: 15, fontWeight: '700', color: colors.onSurfaceVariant, marginBottom: 10 },
+  assayNote: { fontSize: 14, color: colors.onSurfaceVariant, lineHeight: 20 },
+  scoreLine: { fontSize: 16, fontWeight: '700', color: colors.primary, marginBottom: 10 },
   assayItem: { marginVertical: 5 },
-  assayQ: { fontSize: 14, fontWeight: '600', color: '#475569' },
-  assayA: { fontSize: 14, color: '#1E293B', marginLeft: 12, marginTop: 2 },
+  assayQ: { fontSize: 14, fontWeight: '600', color: colors.onSurfaceVariant },
+  assayA: { fontSize: 14, color: colors.onSurface, marginLeft: 12, marginTop: 2 },
   weakestBox: {
     marginTop: 14,
     padding: 10,
     borderRadius: 6,
-    backgroundColor: '#FFF7ED',
+    backgroundColor: colors.warningContainer,
     borderWidth: 1,
-    borderColor: '#FED7AA',
+    borderColor: colors.warningContainer,
   },
-  weakestLabel: { fontSize: 13, fontWeight: '700', color: '#92400E' },
-  weakestValue: { fontSize: 14, color: '#1E293B', marginTop: 2 },
+  weakestLabel: { fontSize: 13, fontWeight: '700', color: colors.warning },
+  weakestValue: { fontSize: 14, color: colors.onSurface, marginTop: 2 },
   actionBtn: { marginTop: 20 },
 });

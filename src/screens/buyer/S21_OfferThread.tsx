@@ -7,6 +7,7 @@ import { getLocale } from '../../lib/locale';
 import { translate } from '../../lib/i18n';
 import { formatNumber } from '../../lib/money';
 import type { Locale } from '../../types/api';
+import { colors } from '../../theme/tokens';
 
 interface OfferRound {
   sender: 'BUYER' | 'FARMER';
@@ -126,24 +127,24 @@ export function S21_OfferThread() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   content: { padding: 20 },
-  header: { fontSize: 20, fontWeight: '700', color: '#1E293B', marginBottom: 16 },
-  summaryCard: { padding: 16, backgroundColor: '#E3F2FD', borderColor: '#90CAF9' },
-  summaryTitle: { fontSize: 18, fontWeight: '700', color: '#1565C0' },
-  summarySub: { fontSize: 14, color: '#1E88E5', marginTop: 4 },
-  sectionHeader: { fontSize: 15, fontWeight: '700', color: '#475569', marginVertical: 12 },
+  header: { fontSize: 20, fontWeight: '700', color: colors.onSurface, marginBottom: 16 },
+  summaryCard: { padding: 16, backgroundColor: colors.surfaceContainerLow, borderColor: colors.borderField },
+  summaryTitle: { fontSize: 18, fontWeight: '700', color: colors.primary },
+  summarySub: { fontSize: 14, color: colors.primary, marginTop: 4 },
+  sectionHeader: { fontSize: 15, fontWeight: '700', color: colors.onSurfaceVariant, marginVertical: 12 },
   roundCard: { padding: 16, marginBottom: 12 },
-  buyerCard: { backgroundColor: '#F0F9FF', borderColor: '#BAE6FD' },
-  farmerCard: { backgroundColor: '#F0FDF4', borderColor: '#BBF7D0' },
+  buyerCard: { backgroundColor: colors.surfaceContainerLow, borderColor: colors.borderField },
+  farmerCard: { backgroundColor: colors.positiveContainer, borderColor: colors.positiveContainer },
   roundHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
-  senderLabel: { fontSize: 14, fontWeight: '700', color: '#334155' },
-  offerPrice: { fontSize: 22, fontWeight: '800', color: '#0F172A' },
-  timeText: { fontSize: 12, color: '#64748B', marginTop: 4 },
+  senderLabel: { fontSize: 14, fontWeight: '700', color: colors.onSurfaceVariant },
+  offerPrice: { fontSize: 22, fontWeight: '800', color: colors.onSurface },
+  timeText: { fontSize: 12, color: colors.onSurfaceVariant, marginTop: 4 },
   inputCard: { padding: 18, marginTop: 12 },
-  inputLabel: { fontSize: 15, fontWeight: '600', color: '#334155', marginBottom: 8 },
-  input: { borderWidth: 1.5, borderColor: '#CBD5E1', borderRadius: 10, padding: 12, fontSize: 18, backgroundColor: '#FFF', marginBottom: 14 },
+  inputLabel: { fontSize: 15, fontWeight: '600', color: colors.onSurfaceVariant, marginBottom: 8 },
+  input: { borderWidth: 1.5, borderColor: colors.borderField, borderRadius: 10, padding: 12, fontSize: 18, backgroundColor: colors.surface, marginBottom: 14 },
   btn: { marginTop: 4 },
-  maxCard: { padding: 16, backgroundColor: '#FFFBEB', borderColor: '#FDE68A', marginTop: 12 },
-  maxText: { color: '#B45309', fontWeight: '600', fontSize: 14 },
+  maxCard: { padding: 16, backgroundColor: colors.warningContainer, borderColor: colors.warningContainer, marginTop: 12 },
+  maxText: { color: colors.warning, fontWeight: '600', fontSize: 14 },
 });

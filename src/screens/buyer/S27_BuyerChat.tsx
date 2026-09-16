@@ -6,6 +6,7 @@ import { getLocale } from '../../lib/locale';
 import { translate } from '../../lib/i18n';
 import { formatNumber } from '../../lib/money';
 import type { Locale } from '../../types/api';
+import { colors } from '../../theme/tokens';
 
 interface Message {
   id: string;
@@ -82,20 +83,20 @@ export function S27_BuyerChat() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8FAF9' },
+  container: { flex: 1, backgroundColor: colors.background },
   headerCard: { margin: 16, padding: 14, borderRadius: 12 },
-  chatTitle: { fontSize: 16, fontWeight: '700', color: '#1E293B' },
-  chatSub: { fontSize: 13, color: '#64748B', marginTop: 2 },
+  chatTitle: { fontSize: 16, fontWeight: '700', color: colors.onSurface },
+  chatSub: { fontSize: 13, color: colors.onSurfaceVariant, marginTop: 2 },
   msgList: { flex: 1, paddingHorizontal: 16 },
   msgContent: { paddingBottom: 16 },
   bubble: { maxWidth: '80%', padding: 12, borderRadius: 12, marginBottom: 10 },
-  buyerBubble: { alignSelf: 'flex-end', backgroundColor: '#1565C0' },
-  farmerBubble: { alignSelf: 'flex-start', backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E2E8F0' },
+  buyerBubble: { alignSelf: 'flex-end', backgroundColor: colors.primary },
+  farmerBubble: { alignSelf: 'flex-start', backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.borderCard },
   msgText: { fontSize: 15, lineHeight: 22 },
-  buyerMsgText: { color: '#FFFFFF' },
-  farmerMsgText: { color: '#1E293B' },
-  timeText: { fontSize: 11, color: '#94A3B8', marginTop: 4, alignSelf: 'flex-end' },
-  inputBar: { flexDirection: 'row', padding: 12, backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#E2E8F0', gap: 8 },
-  textInput: { flex: 1, borderWidth: 1, borderColor: '#CBD5E1', borderRadius: 10, paddingHorizontal: 12, fontSize: 16 },
+  buyerMsgText: { color: colors.surface },
+  farmerMsgText: { color: colors.onSurface },
+  timeText: { fontSize: 11, color: colors.outline, marginTop: 4, alignSelf: 'flex-end' },
+  inputBar: { flexDirection: 'row', padding: 12, backgroundColor: colors.surface, borderTopWidth: 1, borderTopColor: colors.borderCard, gap: 8 },
+  textInput: { flex: 1, borderWidth: 1, borderColor: colors.borderField, borderRadius: 10, paddingHorizontal: 12, fontSize: 16 },
   sendBtn: { minHeight: 48, paddingHorizontal: 16 },
 });

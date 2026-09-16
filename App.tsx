@@ -22,7 +22,6 @@ import { I18nProvider } from './src/lib/i18n';
 import { SelectionProvider } from './src/lib/selection';
 import { hydrateQueryClient, persistQueryClient } from './src/lib/offline';
 import { RootNavigator } from './src/navigation/RootNavigator';
-import { WebBackButton } from './src/components/web/WebBackButton';
 import { CACHE_STALE_MS } from './src/config';
 
 const queryClient = new QueryClient({
@@ -84,11 +83,14 @@ hydrateQueryClient(queryClient).then(() => persistQueryClient(queryClient));
 Sound.setCategory('Playback');
 
 export default function App() {
-  // ★ Web only in effect: `WebBackButton` needs a handle on the navigator from
-  //   outside any screen, because it renders above all of them and has to work
-  //   on the ones that draw no header of their own. On the phone the component
-  //   returns null and this ref is simply unused.
+  // ★ The ref stays although the floating back button it was added for is
+  //   gone: it is what lets the browser's own back button pop the navigator
+  //   instead of unloading the page, which is the half of that work worth
+  //   keeping. The floating control was removed because it sat on top of
+  //   screens that already have their own header arrow and looked stuck on.
   const navigationRef = useNavigationContainerRef();
+
+  useBrowserBack(navigationRef);
 
   return (
     <SafeAreaProvider>
@@ -99,7 +101,6 @@ export default function App() {
             <NavigationContainer ref={navigationRef}>
               <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
               <RootNavigator />
-              <WebBackButton navigationRef={navigationRef} />
             </NavigationContainer>
             </AuthProvider>
           </SelectionProvider>
