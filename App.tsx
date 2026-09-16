@@ -22,7 +22,7 @@ import { I18nProvider } from './src/lib/i18n';
 import { SelectionProvider } from './src/lib/selection';
 import { hydrateQueryClient, persistQueryClient } from './src/lib/offline';
 import { RootNavigator } from './src/navigation/RootNavigator';
-import { useBrowserBack } from './src/lib/useBrowserBack';
+import { webLinking } from './src/navigation/webLinking';
 import { CACHE_STALE_MS } from './src/config';
 
 const queryClient = new QueryClient({
@@ -84,14 +84,7 @@ hydrateQueryClient(queryClient).then(() => persistQueryClient(queryClient));
 Sound.setCategory('Playback');
 
 export default function App() {
-  // ★ The ref stays although the floating back button it was added for is
-  //   gone: it is what lets the browser's own back button pop the navigator
-  //   instead of unloading the page, which is the half of that work worth
-  //   keeping. The floating control was removed because it sat on top of
-  //   screens that already have their own header arrow and looked stuck on.
   const navigationRef = useNavigationContainerRef();
-
-  useBrowserBack(navigationRef);
 
   return (
     <SafeAreaProvider>
@@ -99,7 +92,16 @@ export default function App() {
         <I18nProvider>
           <SelectionProvider>
             <AuthProvider>
-            <NavigationContainer ref={navigationRef}>
+            {/* ★ Real URLs, and with them a real back button.
+
+                Until now the whole app lived at "/" with navigation held in
+                memory: a refresh dumped you back at the landing page, no screen
+                could be linked to, and the browser's own back button left the
+                site — which is why a hand-rolled history hack existed here.
+                React Navigation's linking config does all of that properly, so
+                the hack is gone. `/app/home/verdict` is now a page a judge can
+                bookmark. */}
+            <NavigationContainer ref={navigationRef} linking={webLinking}>
               <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
               <RootNavigator />
             </NavigationContainer>

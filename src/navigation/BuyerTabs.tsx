@@ -151,9 +151,12 @@ export function BuyerTabs() {
       />
       <Tab.Screen
         name="Offers"
-        component={S21_OfferThread}
-        options={{ title: t('buyer_tab_offers'), tabBarIcon: tabIcon('offers') }}
-      />
+        options={{ title: t('buyer_tab_offers'), tabBarIcon: tabIcon('offers') }}>
+        {/* The yard name comes from here rather than from inside the screen:
+            S21 omits the mandi-rate half of its price strip when it is not
+            told which market it is negotiating in, instead of guessing. */}
+        {() => <S21_OfferThread marketName={t('home_market_name')} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Deals"
         component={S22_EscrowTimeline}
