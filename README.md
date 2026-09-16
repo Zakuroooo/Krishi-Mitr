@@ -9,6 +9,8 @@ language, shows the worst case at the same size as the gain, and says
 This repository is the **web build of the mobile app** — the farmer app and the
 buyer console, both of them, running in a browser.
 
+**Live: https://krishi-mitr-alpha.vercel.app**
+
 ## This is the same code, not a rewrite
 
 `src/` holds the React Native source from the mobile app, compiled for the
@@ -69,6 +71,29 @@ Sarvam audio. Without it, the browser's own speech engine reads the screen.
 - **Buyer** — signs straight into the buyer console with the fixture account:
   post demand, matches, lot detail, offers, escrow timeline, reliability, data
   provenance and disputes.
+
+## What has been checked, and what has not
+
+Rendered in a headless browser against the production bundle, with the console
+watched for errors:
+
+- the landing page, in all three languages
+- the farmer home — today's price, the 7-day bars, the verdict with the gain
+  and the worst case side by side, active lots, the tab bar
+- the buyer console — post demand, and all eight of its tabs
+
+No console errors on any of the three.
+
+Two limits worth knowing before a demo:
+
+- **One URL.** Navigation is React Navigation's in-memory stack, as on the
+  phone, so every screen lives at `/` and a refresh returns to the landing
+  page. Deep links per screen would need a linking config, which is a change
+  the phone build does not need and has not been made.
+- **Voice needs a browser that has the language.** Sarvam is the real voice and
+  it needs the API; without it the fallback is the browser's own speech engine,
+  whose Marathi and Hindi coverage varies by device. The app reports that
+  honestly rather than silently reading Marathi in an English voice.
 
 ## Invariants this build keeps
 
