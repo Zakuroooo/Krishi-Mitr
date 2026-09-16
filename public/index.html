@@ -3,12 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#9B2F00" />
+
+    <title>Krishi Mitr — आज विकू की थांबू?</title>
     <meta
       name="description"
-      content="Krishi Mitr — should I sell today or wait? Mandi prices, a plain-language verdict with both the gain and the worst case, and a voice that reads every screen aloud in Marathi, Hindi or English."
+      content="Krishi Mitr tells a farmer whether to sell today or wait — real mandi prices, the expected gain and the worst case at the same size, and it says so when it does not know. Marathi, Hindi and English, read aloud."
     />
-    <title>Krishi Mitr</title>
+    <link rel="canonical" href="https://krishimitr.in/" />
+
+    <!-- The tab icon. SVG first for anything modern; the PNG is the fallback
+         for browsers that still want a raster. -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Parchment while the app boots, terracotta chrome around it. Two values
+         so a farmer's phone in dark mode does not flash white first. -->
+    <meta name="theme-color" content="#9B2F00" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#9B2F00" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Installed to a home screen, this is an app, not a browser tab. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Krishi Mitr" />
+    <meta name="application-name" content="Krishi Mitr" />
+
+    <!-- ★ The link preview matters more than usual here: this link travels by
+         WhatsApp, not by search. Without these a shared link is a bare URL. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Krishi Mitr" />
+    <meta property="og:title" content="Krishi Mitr — आज विकू की थांबू?" />
+    <meta
+      property="og:description"
+      content="खरा बाजारभाव, स्पष्ट सल्ला — आणि फायदा किती तसाच तोटा किती, दोन्ही एकाच आकारात. मराठी, हिंदी व इंग्रजीत वाचून दाखवते."
+    />
+    <meta property="og:url" content="https://krishimitr.in/" />
+    <meta property="og:image" content="https://krishimitr.in/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Krishi Mitr — आज विकू की थांबू?" />
+    <meta property="og:locale" content="mr_IN" />
+    <meta property="og:locale:alternate" content="hi_IN" />
+    <meta property="og:locale:alternate" content="en_IN" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Krishi Mitr — आज विकू की थांबू?" />
+    <meta
+      name="twitter:description"
+      content="Real mandi prices, a plain answer, and the worst case shown at the same size as the gain."
+    />
+    <meta name="twitter:image" content="https://krishimitr.in/og-image.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- The app's own type family. On the phone these ship as bundled .ttf
