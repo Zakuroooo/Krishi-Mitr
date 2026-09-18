@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- Reachable only by direct link: kept out of search results and out of the
+     app's navigation on purpose. -->
+<meta name="robots" content="noindex, nofollow"/>
+<title>Demo video — Krishi Mitr</title>
+<meta name="description" content="A full walkthrough of Krishi Mitr — honest price intelligence, the liquidity to act on it, and a direct marketplace, in the farmer's own language."/>
+<meta property="og:title" content="Krishi Mitr — demo video"/>
+<meta property="og:description" content="Sell today, or wait? A full walkthrough of the app."/>
+<meta property="og:image" content="/og-image.png"/>
+<meta property="og:type" content="video.other"/>
+<link rel="icon" href="/favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  /* Colours are the app's own tokens (src/theme/tokens.ts) — parchment ground,
+     deep-marigold brand, verified-emerald for positive states. */
+  :root{
+    --bg:#FAF6EE; --surface:#FFFFFF; --surface-low:#F7F3EB;
+    --ink:#1C1C17; --ink-soft:#4A342E; --outline:#E1BFB5;
+    --primary:#9B2F00; --primary-container:#C2410C; --on-primary:#FFFFFF;
+    --tertiary:#006146;
+  }
+  *{margin:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+       font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding-left:20px;padding-right:20px;padding-block:0 72px}
+
+  header{display:flex;align-items:center;gap:12px;padding-block:26px 0}
+  .mark{width:38px;height:38px;flex:none}
+  .brand{font-size:19px;font-weight:800;letter-spacing:-.01em}
+  .brand span{color:var(--primary)}
+  header nav{margin-left:auto;display:flex;gap:18px}
+  header nav a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:600}
+  header nav a:hover{color:var(--primary)}
+
+  .eyebrow{display:inline-block;margin-top:46px;padding:6px 14px;border-radius:99px;
+           background:#FFECE7;color:var(--primary);font-size:12px;font-weight:800;
+           letter-spacing:.12em;text-transform:uppercase}
+  h1{font-size:clamp(32px,5.2vw,48px);line-height:1.08;letter-spacing:-.025em;
+     font-weight:800;margin:16px 0 14px;text-wrap:balance}
+  .lede{font-size:clamp(16px,2.1vw,19px);line-height:1.55;color:var(--ink-soft);max-width:62ch}
+  .dv{font-family:'Noto Sans Devanagari','Plus Jakarta Sans',sans-serif;color:var(--primary);font-weight:700}
+
+  .frame{margin-top:34px;border-radius:16px;overflow:hidden;background:#000;
+         border:1px solid var(--outline);box-shadow:0 1px 2px rgba(28,28,23,.05),0 18px 40px rgba(155,47,0,.09)}
+  .ratio{position:relative;width:100%;aspect-ratio:16/9;max-width:100%}
+  .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-soft);display:flex;gap:9px;align-items:flex-start}
+  .note b{color:var(--primary)}
+
+  h2{font-size:15px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+     color:var(--ink-soft);margin:52px 0 18px}
+  .grid{display:grid;gap:14px}
+  @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--surface);border:1px solid var(--outline);border-radius:13px;
+        padding:18px 20px}
+  .card h3{font-size:16.5px;font-weight:800;margin:0 0 6px}
+  .card p{font-size:14.5px;line-height:1.5;color:var(--ink-soft);margin:0}
+  .card .num{display:inline-flex;align-items:center;justify-content:center;
+             width:24px;height:24px;border-radius:7px;background:#FFECE7;
+             color:var(--primary);font-size:12.5px;font-weight:800;margin-bottom:10px}
+
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+  .btn{display:inline-block;padding:13px 22px;border-radius:11px;font-size:15px;
+       font-weight:700;text-decoration:none;transition:transform .12s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--primary);color:var(--on-primary)}
+  .btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--outline)}
+
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--outline);
+         font-size:13.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:8px 18px}
+  footer b{color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <svg class="mark" viewBox="0 0 48 48" role="img" aria-label="Krishi Mitr">
+      <circle cx="24" cy="24" r="24" fill="#9B2F00"/>
+      <path d="M24 35c-7-3-10-9-9-16 7-1 13 3 14 10 .4 3-.6 5-5 6z" fill="#FDF9F1"/>
+      <path d="M24 35c4-2 7-6 7-11" stroke="#FFB59D" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="brand">Krishi <span>Mitr</span></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/start">Farmer</a>
+      <a href="/trader">Buyer</a>
+    </nav>
+  </header>
+
+  <span class="eyebrow">Demo video</span>
+  <h1>Krishi Mitr — the full walkthrough</h1>
+  <p class="lede">
+    <span class="dv">“आज विकू की थांबू?”</span> — sell today, or wait? This is the whole
+    product answering that one question: honest price intelligence, the liquidity to act
+    on it, and a direct marketplace, in the farmer's own language.
+  </p>
+
+  <div class="frame">
+    <div class="ratio">
+      <!-- ══════════════════════════════════════════════════════════════════
+           TO SWAP IN YOUR OWN VIDEO: change VIDEO_ID below to the 11-character
+           id from your YouTube URL.
+               https://www.youtube.com/watch?v=XXXXXXXXXXX
+                                               ^^^^^^^^^^^  <- this part
+           Nothing else on the page needs to change.
+           ══════════════════════════════════════════════════════════════════ -->
+      <iframe id="player"
+        title="Krishi Mitr demo video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+  <p class="note" id="placeholder-note">
+    <b>Placeholder.</b>
+    <span>This is a stand-in clip while our own walkthrough is being recorded.
+    Replace <code>VIDEO_ID</code> in this page, then delete this line.</span>
+  </p>
+
+  <h2>What the walkthrough covers</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="num">1</span>
+      <h3>Today's real price</h3>
+      <p>The mandi rate minus transport, hamali and commission — what actually reaches his hand, not the number on the board.</p>
+    </div>
+    <div class="card">
+      <span class="num">2</span>
+      <h3>The verdict, with both numbers</h3>
+      <p>Wait or sell, with the expected gain and the worst case shown at the same size. When the band is too wide, it refuses to advise.</p>
+    </div>
+    <div class="card">
+      <span class="num">3</span>
+      <h3>Liquidity to act on it</h3>
+      <p>Deposit at a partner warehouse and draw cash against the stored lot, so waiting becomes affordable.</p>
+    </div>
+    <div class="card">
+      <span class="num">4</span>
+      <h3>A direct, verified sale</h3>
+      <p>Verified buyers, escrow-backed payment and a dispute window before release — the whole loop, spoken in Marathi.</p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-primary" href="/">Open the live app</a>
+    <a class="btn btn-ghost" href="/start">Farmer walkthrough</a>
+    <a class="btn btn-ghost" href="/trader">Buyer console</a>
+  </div>
+
+  <footer>
+    <span><b>Krishi Mitr</b> · Team Neolithic</span>
+    <span>Smart India Hackathon 2026 · PS 26132</span>
+    <span>Figures in the live demo are sample data.</span>
+  </footer>
+
+</div>
+
+<script>
+  /* The one line to change when the real video is ready. */
+  var VIDEO_ID = "WAPLwC0vs8A";
+
+  document.getElementById("player").src =
+    "https://www.youtube-nocookie.com/embed/" + VIDEO_ID + "?rel=0&modestbranding=1";
+</script>
+</body>
+</html>
