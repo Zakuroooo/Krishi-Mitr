@@ -30,13 +30,11 @@
        -webkit-font-smoothing:antialiased}
   .wrap{max-width:1000px;margin:0 auto;padding-left:20px;padding-right:20px;padding-block:0 72px}
 
-  header{display:flex;align-items:center;gap:12px;padding-block:26px 0}
-  .mark{width:38px;height:38px;flex:none}
+  header{display:flex;align-items:center;gap:12px;padding-block:26px 0;flex-wrap:wrap}
+  .mark{width:40px;height:40px;flex:none}
   .brand{font-size:19px;font-weight:800;letter-spacing:-.01em}
   .brand span{color:var(--primary)}
-  header nav{margin-left:auto;display:flex;gap:18px}
-  header nav a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:600}
-  header nav a:hover{color:var(--primary)}
+  header .spacer{margin-left:auto}
 
   .eyebrow{display:inline-block;margin-top:46px;padding:6px 14px;border-radius:99px;
            background:#FFECE7;color:var(--primary);font-size:12px;font-weight:800;
@@ -83,17 +81,19 @@
 <div class="wrap">
 
   <header>
-    <svg class="mark" viewBox="0 0 48 48" role="img" aria-label="Krishi Mitr">
-      <circle cx="24" cy="24" r="24" fill="#9B2F00"/>
-      <path d="M24 35c-7-3-10-9-9-16 7-1 13 3 14 10 .4 3-.6 5-5 6z" fill="#FDF9F1"/>
-      <path d="M24 35c4-2 7-6 7-11" stroke="#FFB59D" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <!-- The app's own mark, identical to public/favicon.svg: the arch is a
+         shallow span rather than a semicircle, with the stem rising through
+         its crown and two leaves off the stem. -->
+    <svg class="mark" viewBox="0 0 86 86" role="img" aria-label="Krishi Mitr">
+      <circle cx="43" cy="43" r="43" fill="#9B2F00"/>
+      <path d="M22 58 Q43 36 64 58" stroke="#FFECE7" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <path d="M43 56 L43 34" stroke="#FFECE7" stroke-width="5" stroke-linecap="round"/>
+      <path d="M43 40 Q31 36 30 25 Q42 26 43 40Z" fill="#B9FFDE"/>
+      <path d="M43 44 Q55 40 56 29 Q44 30 43 44Z" fill="#0F7C5B"/>
     </svg>
     <div class="brand">Krishi <span>Mitr</span></div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/start">Farmer</a>
-      <a href="/trader">Buyer</a>
-    </nav>
+    <span class="spacer"></span>
+    <a class="btn btn-primary" href="/">Open the live app</a>
   </header>
 
   <span class="eyebrow">Demo video</span>
@@ -148,12 +148,6 @@
       <h3>A direct, verified sale</h3>
       <p>Verified buyers, escrow-backed payment and a dispute window before release — the whole loop, spoken in Marathi.</p>
     </div>
-  </div>
-
-  <div class="cta">
-    <a class="btn btn-primary" href="/">Open the live app</a>
-    <a class="btn btn-ghost" href="/start">Farmer walkthrough</a>
-    <a class="btn btn-ghost" href="/trader">Buyer console</a>
   </div>
 
   <footer>
