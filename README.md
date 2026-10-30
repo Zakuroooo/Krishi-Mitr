@@ -322,7 +322,7 @@ erDiagram
 | Offline storage | AsyncStorage (localStorage on web) + hand-written persistence in `lib/offline.ts` | Uses Query's built-in `dehydrate`/`hydrate` instead of adding the persist-client package. |
 | Auth / security | Phone + OTP, then a JWT; keys only in Vercel env vars; `.env*` git-ignored | The bundle holds no secrets. In this deployment the sign-in uses fixture accounts. |
 | Build | webpack 5 + Babel (preset-env/react/typescript) | Aliases `react-native` and the native modules to the web shims. |
-| Testing | None in this repo yet (see [Testing](#testing)) | |
+| Testing | Jest 29 + React Native Testing Library: **363 tests in 30 suites, all passing**, in the [mobile source repo](https://github.com/Zakuroooo/Oneforall-Farmers/tree/pranay/app) | This web repo adds a build and a headless smoke run (see [Testing](#testing)). |
 | CI / deploy | Vercel builds `npm run build` → `dist/`, with SPA rewrites in `vercel.json`. No CI workflow is set up. | |
 
 ## Project structure
@@ -373,7 +373,15 @@ The `/api` functions run only on Vercel (or under `vercel dev`). `npm start` ser
 
 ## Testing
 
-There is no automated test suite in this repository yet. What was run for this README:
+**Unit and screen tests live in the mobile source repo** ([Oneforall-Farmers / app](https://github.com/Zakuroooo/Oneforall-Farmers/tree/pranay/app)), because this repo is only the web build of that source.
+
+| Mobile source tests (`cd app && npx jest`) | Result |
+|---|---|
+| Test suites | **30 of 30 pass** |
+| Tests | **363 of 363 pass** (Jest 29 + React Native Testing Library; native modules such as AsyncStorage, react-native-fs, sound and TTS are mocked in `jest.setup.js`) |
+| Covers | pure modules (`spokenDigits`, `chunkForSarvam`, `numberWords`, `RegistrationAgent`, money), farmer and buyer screens (verdict, counter-offer, pool split, dispute, data provenance), and the app shell |
+
+What was run on this web repo:
 
 | Check | Result |
 |---|---|
@@ -420,7 +428,7 @@ Each of these is documented at the fix site in the code.
 - **No live data in this deployment.** The forecasting service and the FastAPI backend aren't deployed with this site. Setting `USE_FIXTURES = false` compiles against real `lib/api` calls, but three endpoints still have open contract questions (`GET /buyers/{id}`, `GET /tx`, `tx_id` on an accepted offer).
 - **Offline is partial on the web.** The data cache survives, but there's no service worker, so with no network a cold page load fails before the app starts (`net::ERR_INTERNET_DISCONNECTED` in a headless test). Next step: a service worker that precaches the app shell.
 - **The fallback voice depends on the browser.** Web Speech coverage of Marathi and Hindi varies by device and browser, and some browser voices need the network themselves. The bundled offline Marathi clips the native engine is designed for aren't recorded yet, so that path also uses the device TTS engine today.
-- **No automated tests or CI here**, and `npm run typecheck` needs its config fixed for this repo (see [Testing](#testing)). Next: a standalone `tsconfig`, unit tests for the pure modules (`spokenDigits`, `chunkForSarvam`, `parseFarmerDetails`, `RegistrationAgent`, `money`), and a GitHub Actions workflow running typecheck, tests and build.
+- **Tests run in the mobile source repo, not here.** The 363 Jest tests live with the source; this web repo has no CI yet, and `npm run typecheck` needs a standalone `tsconfig` here (see [Testing](#testing)). Next: a GitHub Actions workflow that runs the source tests and this build on every push.
 - **Token storage.** The JWT sits in plain AsyncStorage. The planned move is to `react-native-keychain` on Android.
 - **Bundle size.** The main bundle is 1.3 MiB minified, and three hero JPEGs are 750 KB–1 MB each. Code splitting by navigator and recompressing those images would cut first-load time on rural networks.
 - **No license file.** All rights reserved until one is added.
